@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="FINTECHKATHON Handbook - Complete Guide for Participants" />
+    <title>Handbook - FINTECHKATHON</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../index.css" />
+    <style>
+        .handbook-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            padding: 60px 20px;
+        }
+
+        .download-btn {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        .download-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .handbook-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .handbook-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .handbook-tag {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .handbook-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .handbook-subtitle {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .handbook-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .handbook-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .handbook-section h2 .icon {
+            font-size: 1.5rem;
+        }
+
+        .handbook-section p,
+        .handbook-section li {
+            font-size: 1rem;
+            color: #c0c0c0;
+            line-height: 1.8;
+        }
+
+        .handbook-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .handbook-section li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .handbook-section li:last-child {
+            border-bottom: none;
+        }
+
+        .handbook-section li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .timeline-date {
+            min-width: 120px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-content h4 {
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content p {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+        }
+
+
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .rule-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .rule-card h4 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .rule-card p {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating Download Button -->
+    <a href="handbook.html" download="FINTECHKATHON-Handbook.html" class="download-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+        Download
+    </a>
+
+    <main class="handbook-page">
+        <div class="handbook-container">
+            <header class="handbook-header">
+                <span class="handbook-tag">Participant Guide</span>
+                <h1 class="handbook-title">Handbook</h1>
+                <p class="handbook-subtitle">Everything you need to know to compete and win at FINTECHKATHON 2026</p>
+            </header>
+
+            <section class="handbook-section">
+                <h2><span class="icon">📅</span> Event Schedule</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-date">Day 1 - Jan 15</span>
+                        <div class="timeline-content">
+                            <h4>Opening & Kickoff</h4>
+                            <p>Registration, opening ceremony, team formation, and hackathon begins</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">Day 2 - Jan 16</span>
+                        <div class="timeline-content">
+                            <h4>Hacking Day</h4>
+                            <p>Full day of development, mentor sessions, and workshops</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">Day 3 - Jan 17</span>
+                        <div class="timeline-content">
+                            <h4>Demo & Awards</h4>
+                            <p>Final submissions, presentations, judging, and award ceremony</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="handbook-section">
+                <h2><span class="icon">📋</span> Rules & Guidelines</h2>
+                <div class="rules-grid">
+                    <div class="rule-card">
+                        <h4>Team Size</h4>
+                        <p>Teams must consist of 3-5 members. Solo participation is not allowed.</p>
+                    </div>
+                    <div class="rule-card">
+                        <h4>Original Work</h4>
+                        <p>All code must be written during the hackathon. Pre-built solutions are not permitted.</p>
+                    </div>
+                    <div class="rule-card">
+                        <h4>Tech Stack</h4>
+                        <p>Any programming language or framework is allowed. Use what you're comfortable with.</p>
+                    </div>
+                    <div class="rule-card">
+                        <h4>Submissions</h4>
+                        <p>All projects must be submitted by 10 AM on Day 3 via the submission portal.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="handbook-section">
+                <h2><span class="icon">🎯</span> Judging Criteria</h2>
+                <ul>
+                    <li><strong>Innovation (25%)</strong> - How creative and unique is your solution?</li>
+                    <li><strong>Technical Implementation (25%)</strong> - Quality of code and architecture</li>
+                    <li><strong>User Experience (20%)</strong> - Design, usability, and accessibility</li>
+                    <li><strong>Business Potential (20%)</strong> - Market viability and scalability</li>
+                    <li><strong>Presentation (10%)</strong> - How well you pitch your idea</li>
+                </ul>
+            </section>
+
+            <section class="handbook-section">
+                <h2><span class="icon">🎒</span> What to Bring</h2>
+                <ul>
+                    <li>Laptop and charger (power strips provided)</li>
+                    <li>Valid student/professional ID</li>
+                    <li>Comfortable clothing (it can get cold!)</li>
+                    <li>Personal hygiene items</li>
+                    <li>Medications if needed</li>
+                    <li>Enthusiasm and creative spirit!</li>
+                </ul>
+            </section>
+
+            <section class="handbook-section">
+                <h2><span class="icon">🍕</span> What We Provide</h2>
+                <ul>
+                    <li>Meals throughout the event (breakfast, lunch, dinner)</li>
+                    <li>Snacks and beverages 24/7</li>
+                    <li>High-speed WiFi</li>
+                    <li>Workspace and seating</li>
+                    <li>FINTECHKATHON merchandise</li>
+                    <li>Certificates for all participants</li>
+                </ul>
+            </section>
+
+
+        </div>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

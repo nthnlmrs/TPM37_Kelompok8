@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Team {
+  id            Int         @id @default(autoincrement())
+  team_name     String      @unique
+  password_hash String
+  is_binusian   Boolean     @default(false)
+  created_at    DateTime    @default(now())
+  updated_at    DateTime    @updatedAt
+  leader        TeamLeader?
+  members       TeamMember[]
+
+  @@map("teams")
+}
+
+model TeamLeader {
+  id          Int       @id @default(autoincrement())
+  team_id     Int       @unique
+  full_name   String
+  email       String    @unique
+  whatsapp    String
+  line_id     String?
+  github_id   String?
+  birth_place String?
+  birth_date  DateTime?
+  is_binusian Boolean   @default(false)
+  cv_path     String?
+  id_card_path String?
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  team        Team      @relation(fields: [team_id], references: [id], onDelete: Cascade)
+
+  @@map("team_leaders")
+}
+
+model TeamMember {
+  id          Int       @id @default(autoincrement())
+  team_id     Int
+  full_name   String
+  email       String    @unique
+  whatsapp    String
+  line_id     String?
+  github_id   String?
+  birth_place String?
+  birth_date  DateTime?
+  is_binusian Boolean   @default(false)
+  cv_path     String?
+  id_card_path String?
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  team        Team      @relation(fields: [team_id], references: [id], onDelete: Cascade)
+
+  @@map("team_members")
+}
+
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  subject   String
+  message   String
+  is_read   Boolean  @default(false)
+  created_at DateTime @default(now())
+  
+  @@map("contact_messages")
+}
+
+model Admin {
+  id            Int      @id @default(autoincrement())
+  username      String   @unique
+  password_hash String
+  role          String   @default("admin")
+  created_at    DateTime @default(now())
+
+  @@map("admins")
+}

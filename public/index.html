@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FINTECHKATHON - Indonesia's Premier Fintech Hackathon" />
+  <title>FINTECHKATHON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="index.css?v=7" />
+
+
+
+
+
+
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link" data-section="home">Home</a></li>
+        <li>
+          <a href="#prizes" class="nav-link" data-section="prizes">Prizes</a>
+        </li>
+        <li>
+          <a href="#Mentors" class="nav-link" data-section="Mentors">Our Mentors</a>
+        </li>
+        <li>
+          <a href="#Jurys" class="nav-link" data-section="Jurys">Our Jurys</a>
+        </li>
+        <li>
+          <a href="#About-us" class="nav-link" data-section="About-us">About Us</a>
+        </li>
+        <li>
+          <a href="#FAQ" class="nav-link" data-section="FAQ">FAQ</a>
+        </li>
+        <li>
+          <a href="#contact" class="nav-link" data-section="contact">Contact Us</a>
+
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <a href="/login" class="btn btn-primary nav-auth-btn">Login</a>
+      </div>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="scroll-container">
+    <section class="section hero" id="home">
+      <div class="hero-video-wrapper">
+        <iframe class="hero-video-iframe"
+          src="https://www.youtube.com/embed/y6a79l9bBKE?autoplay=1&mute=1&loop=1&playlist=y6a79l9bBKE&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+
+      <div class="hero-overlay">
+        <div class="hero-container">
+          <div class="hero-content">
+            <div class="hero-left">
+              <h1 class="hero-title">
+                <span class="title-line">Fintech</span>
+                <span class="title-line">kathon</span>
+              </h1>
+              <div class="hero-date">
+                <span class="date-text">January 15 - 17</span>
+                <span class="date-separator">+</span>
+                <span class="date-year">2026</span>
+              </div>
+              <p class="hero-location">Bina Nusantara Computer Club</p>
+            </div>
+            <div class="hero-right">
+              <div class="hero-tagline">
+                <p>Be part of Indonesia's largest</p>
+                <p class="highlight">
+                  fintech hackath<span class="heart">♥</span>n
+                </p>
+              </div>
+              <div class="hero-buttons">
+                <a href="/register" class="btn btn-primary">Register Now</a>
+                <a href="/handbook/guidebook.pdf" target="_blank" class="btn btn-outline" download>Download
+                  Guidebook</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section prizes" id="prizes">
+      <div class="section-container prizes-wrapper">
+        <div class="prizes-left">
+          <span class="prizes-label">Win Big</span>
+          <h2 class="prizes-main-title">Prizes</h2>
+          <p class="prizes-desc">Amazing rewards await the top innovators. Compete for cash prizes, exclusive
+            merchandise, and recognition.</p>
+          <div class="prizes-total">
+            <span class="total-label">Total Prize Pool</span>
+            <span class="total-amount">Rp 50.000.000+</span>
+          </div>
+        </div>
+        <div class="prizes-right">
+          <div class="prizes-stack">
+            <div class="prize-row prize-gold">
+              <div class="prize-badge">🥇</div>
+              <div class="prize-details">
+                <span class="prize-rank">1st Place</span>
+                <span class="prize-money">Rp 25.000.000</span>
+              </div>
+              <span class="prize-extras-small">+ Merch + Certificate</span>
+            </div>
+            <div class="prize-row prize-silver">
+              <div class="prize-badge">🥈</div>
+              <div class="prize-details">
+                <span class="prize-rank">2nd Place</span>
+                <span class="prize-money">Rp 15.000.000</span>
+              </div>
+              <span class="prize-extras-small">+ Merch + Certificate</span>
+            </div>
+            <div class="prize-row prize-bronze">
+              <div class="prize-badge">🥉</div>
+              <div class="prize-details">
+                <span class="prize-rank">3rd Place</span>
+                <span class="prize-money">Rp 10.000.000</span>
+              </div>
+              <span class="prize-extras-small">+ Merch + Certificate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section prizes" id="Mentors">
+      <div class="section-container mentor-carousel-wrapper">
+        <div class="mentor-carousel-left">
+          <span class="mentor-tag">Your Guides</span>
+          <h2 class="mentor-carousel-title">Our Mentors</h2>
+          <p class="mentor-carousel-desc">Industry experts ready to guide your innovation journey through fintech
+            landscape.</p>
+          <div class="mentor-carousel-deco">
+            <div class="deco-line"></div>
+            <div class="deco-dot"></div>
+          </div>
+        </div>
+        <div class="mentor-carousel-right">
+          <div class="mentor-carousel-fade mentor-carousel-fade-top"></div>
+          <div class="mentor-carousel-scroll" id="mentorCarousel">
+            <div class="mentor-carousel-card" data-index="0">
+              <div class="mcc-avatar">SJ</div>
+              <div class="mcc-info">
+                <h3>Sarah Johnson</h3>
+                <p class="mcc-role">Senior Fintech Advisor</p>
+                <span class="mcc-stat">10+ Years • 50+ Startups</span>
+              </div>
+            </div>
+            <div class="mentor-carousel-card" data-index="1">
+              <div class="mcc-avatar">DC</div>
+              <div class="mcc-info">
+                <h3>David Chen</h3>
+                <p class="mcc-role">Blockchain Specialist</p>
+                <span class="mcc-stat">8+ Years • Web3 Expert</span>
+              </div>
+            </div>
+            <div class="mentor-carousel-card" data-index="2">
+              <div class="mcc-avatar">AW</div>
+              <div class="mcc-info">
+                <h3>Amanda Williams</h3>
+                <p class="mcc-role">Product Strategy Lead</p>
+                <span class="mcc-stat">12+ Years • Ex-Google</span>
+              </div>
+            </div>
+            <div class="mentor-carousel-card" data-index="3">
+              <div class="mcc-avatar">MB</div>
+              <div class="mcc-info">
+                <h3>Michael Brown</h3>
+                <p class="mcc-role">UX/UI Design Director</p>
+                <span class="mcc-stat">15+ Years • Award Winner</span>
+              </div>
+            </div>
+            <div class="mentor-carousel-card" data-index="4">
+              <div class="mcc-avatar">JL</div>
+              <div class="mcc-info">
+                <h3>Jessica Lee</h3>
+                <p class="mcc-role">Data Science Lead</p>
+                <span class="mcc-stat">7+ Years • AI/ML Expert</span>
+              </div>
+            </div>
+            <div class="mentor-carousel-card" data-index="5">
+              <div class="mcc-avatar">RK</div>
+              <div class="mcc-info">
+                <h3>Robert Kim</h3>
+                <p class="mcc-role">Security Architect</p>
+                <span class="mcc-stat">11+ Years • Cybersec</span>
+              </div>
+            </div>
+            <div class="mentor-carousel-card" data-index="6">
+              <div class="mcc-avatar">NA</div>
+              <div class="mcc-info">
+                <h3>Nina Andersen</h3>
+                <p class="mcc-role">Growth Marketing</p>
+                <span class="mcc-stat">9+ Years • Ex-Gojek</span>
+              </div>
+            </div>
+            <div class="mentor-carousel-card" data-index="7">
+              <div class="mcc-avatar">TS</div>
+              <div class="mcc-info">
+                <h3>Tom Santos</h3>
+                <p class="mcc-role">Mobile Dev Lead</p>
+                <span class="mcc-stat">10+ Years • Flutter Pro</span>
+              </div>
+            </div>
+            <div class="mentor-carousel-card" data-index="8">
+              <div class="mcc-avatar">LP</div>
+              <div class="mcc-info">
+                <h3>Lisa Park</h3>
+                <p class="mcc-role">Startup Founder</p>
+                <span class="mcc-stat">6+ Years • $10M Raised</span>
+              </div>
+            </div>
+          </div>
+          <div class="mentor-carousel-fade mentor-carousel-fade-bottom"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section prizes" id="Jurys">
+      <div class="section-container jury-carousel-wrapper">
+        <div class="jury-carousel-left">
+          <span class="jury-tag">The Experts</span>
+          <h2 class="jury-carousel-title">Our Jury</h2>
+          <p class="jury-carousel-desc">Industry leaders evaluating your groundbreaking fintech solutions.</p>
+          <div class="jury-carousel-deco">
+            <div class="deco-line"></div>
+            <div class="deco-dot"></div>
+          </div>
+        </div>
+        <div class="jury-carousel-right">
+          <div class="jury-card-grid">
+            <div class="jury-vertical-card">
+              <div class="jvc-image">RL</div>
+              <div class="jvc-body">
+                <h3>Robert Lang</h3>
+                <p>CTO, TechFin Global</p>
+              </div>
+            </div>
+            <div class="jury-vertical-card">
+              <div class="jvc-image">EZ</div>
+              <div class="jvc-body">
+                <h3>Emily Zhang</h3>
+                <p>Venture Capital Partner</p>
+              </div>
+            </div>
+            <div class="jury-vertical-card">
+              <div class="jvc-image">JW</div>
+              <div class="jvc-body">
+                <h3>James Wilson</h3>
+                <p>Head of Innovation</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section prizes" id="About-us">
+      <div class="section-container about-section">
+        <div class="about-wrapper">
+          <div class="about-left">
+            <span class="about-label">Who We Are</span>
+            <h2 class="about-title">FINTECHKATHON</h2>
+            <p class="about-tagline">Indonesia's Premier Fintech Hackathon</p>
+          </div>
+          <div class="about-right">
+            <p>
+              FINTECHKATHON is Indonesia's largest fintech hackathon, bringing together the brightest minds in
+              technology and finance. We provide a platform for innovators to create groundbreaking solutions that shape
+              the future of financial technology.
+            </p>
+            <p>
+              Organized by Bina Nusantara Computer Club, our event connects talented developers, designers, and
+              entrepreneurs with industry leaders and mentors. Join us in revolutionizing the fintech landscape.
+            </p>
+            <div class="about-stats">
+              <div class="stat-item">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Participants</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">50M+</span>
+                <span class="stat-label">Total Prize</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">3</span>
+                <span class="stat-label">Days Event</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section prizes" id="FAQ">
+      <div class="section-container faq-wrapper">
+        <div class="faq-left">
+          <span class="faq-tag">Got Questions?</span>
+          <h2 class="faq-title">FAQ</h2>
+          <p class="faq-desc">Find answers to commonly asked questions about FINTECHKATHON.</p>
+          <div class="faq-deco">
+            <div class="deco-line"></div>
+            <div class="deco-dot"></div>
+          </div>
+        </div>
+        <div class="faq-right">
+          <div class="faq-accordion">
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span>What is FINTECHKATHON?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>FINTECHKATHON is Indonesia's largest fintech hackathon, bringing together developers, designers, and
+                  entrepreneurs to create innovative financial technology solutions over 3 days.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span>Who can participate?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Anyone with a passion for fintech! Students, professionals, developers, designers, and entrepreneurs
+                  are all welcome. Teams of 3-5 members are recommended.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span>Is there a registration fee?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>No! FINTECHKATHON is completely free to participate. We provide meals, swag, and a great learning
+                  experience at no cost.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span>What should I bring?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Bring your laptop, charger, student ID, and lots of enthusiasm! We'll provide everything else
+                  including food, drinks, and a comfortable workspace.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span>How are winners selected?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Our expert jury evaluates projects based on innovation, technical implementation, user experience,
+                  business potential, and presentation quality.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-wrapper" id="contact">
+      <div class="section-container contact-section">
+
+        <div class="container-contact-us">
+          <form id="contact-form" class="contact-form-grid">
+            <div class="form-column form-left">
+              <div class="form-group">
+                <label for="name" class="label-form">Name</label>
+                <input type="text" id="name" name="name" class="input-form" placeholder="Enter your full name"
+                  required />
+              </div>
+              <div class="form-group">
+                <label for="email" class="label-form">Email</label>
+                <input type="email" id="email" name="email" class="input-form" placeholder="yourname@example.com"
+                  required />
+              </div>
+            </div>
+            <div class="form-column form-right">
+              <div class="form-group">
+                <label for="subject" class="label-form">Subject</label>
+                <input type="text" id="subject" name="subject" class="input-form" placeholder="How can we help you?"
+                  required />
+              </div>
+              <div class="form-group form-group-message">
+                <label for="message" class="label-form">Message</label>
+                <textarea id="message" name="message" class="input-form" placeholder="Write your message here..."
+                  required></textarea>
+              </div>
+            </div>
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-primary btn-submit">
+                <span>Send Message</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <section class="section footer-section" id="footer">
+
+      <div class="footer-container-inline">
+        <div class="footer-branding">
+          <span>Powered by</span>
+          <strong class="footer-bncc">BNCC</strong>
+        </div>
+        <div class="footer-socials">
+          <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="mailto:contact@technoscape.id" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+        <div class="footer-copy">
+          &copy; 2026 Technoscape. All rights reserved.
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- Font Awesome for Social Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="index.js?v=6"></script>
+
+
+
+
+</body>
+
+</html>

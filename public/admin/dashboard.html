@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Technoscape</title>
+    <link rel="stylesheet" href="/admin/css/style.css?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="admin-dashboard">
+    <div class="sidebar">
+        <h2>Technoscape</h2>
+        <a href="#" class="nav-link active"><i class="fas fa-users"></i> Teams</a>
+        <a href="#" class="nav-link logout-link" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Registered Teams</h1>
+            <div class="controls">
+                <input type="text" id="search-bar" placeholder="Search teams..." class="search-bar">
+                <select id="sort-select" class="sort-select">
+                    <option value="id-asc" selected>ID (Low-High)</option>
+                    <option value="id-desc">ID (High-Low)</option>
+                    <option value="date-desc">Newest First</option>
+                    <option value="date-asc">Oldest First</option>
+                    <option value="name-asc">Name (A-Z)</option>
+                    <option value="name-desc">Name (Z-A)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Team Name</th>
+                        <th>Leader Name</th>
+                        <th>Status</th>
+                        <th>Registered At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="team-list">
+                    <!-- Dynamic Data -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- View Modal -->
+    <div id="view-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Team Details</h2>
+            <div id="view-modal-body">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Team</h2>
+            <form id="edit-form">
+                <input type="hidden" id="edit-team-id">
+                <div class="form-group">
+                    <label>Team Name</label>
+                    <input type="text" id="edit-team-name" required>
+                </div>
+                <h3>Leader Info</h3>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="edit-full-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="edit-email" required>
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp</label>
+                    <input type="text" id="edit-whatsapp" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                    <button type="button" class="btn-secondary" id="cancel-edit">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/admin/js/dashboard.js?v=3"></script>
+
+</body>
+
+</html>

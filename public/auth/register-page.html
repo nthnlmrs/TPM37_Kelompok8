@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Final Project TPM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS INTERNAL --- */
+        :root {
+            --primary: #e91e63;
+            --primary-dark: #c2185b;
+            --secondary: #ffd700;
+            --dark-bg: #0f0826;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-light: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --success: #4caf50;
+            --error: #f44336;
+            --font-main: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--dark-bg);
+            background-image: radial-gradient(circle at top right, rgba(233, 30, 99, 0.1), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(255, 215, 0, 0.1), transparent 40%);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        /* LAYOUT 2 KOLOM */
+        .register-layout {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr;
+            /* Kiri Besar, Kanan Kecil */
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* KOLOM KIRI (Inputs) */
+        .register-left {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        /* KOLOM KANAN (Controls) */
+        .register-right {
+            position: sticky;
+            top: 20px;
+            background: rgba(15, 8, 38, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(233, 30, 99, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .auth-header h2 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, var(--text-light), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .auth-header p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-light);
+            font-family: var(--font-main);
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        /* Progress Steps */
+        .progress-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-step-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+
+        .progress-step-item.active {
+            opacity: 1;
+        }
+
+        .step-number {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .progress-step-item.active .step-number {
+            background: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        /* Binusian Toggle */
+        .binusian-toggle-container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .binusian-label-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .radio-input {
+            margin-right: 10px;
+            accent-color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Buttons */
+        .btn-primary,
+        .btn-next {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover,
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(233, 30, 99, 0.4);
+        }
+
+        .btn-back {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* File Upload */
+        .file-upload-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .file-display-box {
+            flex-grow: 1;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-muted);
+            font-style: italic;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .btn-browse {
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .btn-browse:hover {
+            background: var(--primary);
+        }
+
+        /* Requirements List */
+        #password-requirements {
+            list-style: none;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        #password-requirements li {
+            margin-bottom: 5px;
+            color: var(--error);
+            display: flex;
+            align-items: center;
+        }
+
+        #password-requirements li::before {
+            content: '✕';
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        #password-requirements li.valid {
+            color: var(--success);
+        }
+
+        #password-requirements li.valid::before {
+            content: '✓';
+        }
+
+        .error-inline {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .auth-alt-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .auth-alt-link a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .register-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .register-right {
+                position: static;
+                order: -1;
+                margin-bottom: 20px;
+            }
+
+            .file-upload-container {
+                flex-direction: column;
+            }
+        }
+
+        /* Toast */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background: linear-gradient(45deg, var(--primary-dark), var(--error));
+            color: #fff;
+            text-align: center;
+            border-radius: 50px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="auth-container">
+        <form id="register-form" enctype="multipart/form-data">
+            <div class="register-layout">
+
+                <div class="register-left">
+                    <div class="auth-header">
+                        <h2>Registration</h2>
+                        <p>Fill in your team details.</p>
+                    </div>
+
+                    <div id="step1-inputs">
+                        <div class="form-group">
+                            <label for="team-name" class="form-label">Group Name *</label>
+                            <input type="text" id="team-name" name="team_name" class="form-input"
+                                placeholder="Unique team name" required>
+                            <span class="error-inline" id="error-team-name"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password *</label>
+                            <input type="password" id="password" name="password" class="form-input"
+                                placeholder="Create a strong password" required>
+                            <span class="error-inline" id="error-password"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="color:var(--text-muted); font-size:0.9rem;">Password Requirements:</label>
+                            <ul id="password-requirements">
+                                <li id="req-length" class="invalid">Min. 8 characters</li>
+                                <li id="req-upper" class="invalid">Uppercase letter</li>
+                                <li id="req-lower" class="invalid">Lowercase letter</li>
+                                <li id="req-number" class="invalid">Number</li>
+                                <li id="req-symbol" class="invalid">Symbol</li>
+                            </ul>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm-password" class="form-label">Confirm Password *</label>
+                            <input type="password" id="confirm-password" name="confirm_password" class="form-input"
+                                placeholder="Re-enter password" required>
+                            <span class="error-inline" id="error-confirm-password"></span>
+                        </div>
+                    </div>
+
+                    <div id="step2-inputs" style="display: none;">
+                        <div class="form-group">
+                            <label for="full_name" class="form-label">Leader Full Name *</label>
+                            <input type="text" id="full_name" name="full_name" class="form-input"
+                                placeholder="Full Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="user@gmail.com"
+                                required>
+                            <span class="error-inline" id="error-email"></span>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="form-group">
+                                <label for="whatsapp" class="form-label">WhatsApp *</label>
+                                <input type="tel" id="whatsapp" name="whatsapp" class="form-input" placeholder="08..."
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="line_id" class="form-label">LINE ID *</label>
+                                <input type="text" id="line_id" name="line_id" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="github_id" class="form-label">Github/Gitlab ID *</label>
+                            <input type="text" id="github_id" name="github_id" class="form-input" required>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="form-group">
+                                <label for="birthplace" class="form-label">Birth Place *</label>
+                                <select id="birthplace" name="birth_place" class="form-input"
+                                    style="background-color: var(--dark-bg);" required>
+                                    <option value="">Select City</option>
+                                    <option value="Jakarta">Jakarta</option>
+                                    <option value="Surabaya">Surabaya</option>
+                                    <option value="Bandung">Bandung</option>
+                                    <option value="Malang">Malang</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="birthdate" class="form-label">Birth Date *</label>
+                                <input type="date" id="birthdate" name="birth_date" class="form-input" required>
+                                <span class="error-inline" id="error-birthdate"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Upload CV *</label>
+                            <div class="file-upload-container">
+                                <input type="file" id="cv" name="cv" accept=".pdf,.jpg" required style="display:none;">
+                                <div id="cv-display" class="file-display-box">No file chosen</div>
+                                <button type="button" onclick="document.getElementById('cv').click()"
+                                    class="btn-browse">Browse</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" id="identity-label">Upload Flazz Card *</label>
+                            <div class="file-upload-container">
+                                <input type="file" id="identity_doc" name="identity_doc" accept=".pdf,.jpg" required
+                                    style="display:none;">
+                                <div id="identity-display" class="file-display-box">No file chosen</div>
+                                <button type="button" onclick="document.getElementById('identity_doc').click()"
+                                    class="btn-browse">Browse</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="register-right">
+
+                    <div class="progress-container">
+                        <div class="progress-step-item active" id="progress-step-1">
+                            <div class="step-number">1</div>
+                            <div>Team Credentials</div>
+                        </div>
+                        <div class="progress-step-item" id="progress-step-2">
+                            <div class="step-number">2</div>
+                            <div>Leader Data</div>
+                        </div>
+                    </div>
+
+                    <div class="binusian-toggle-container">
+                        <span class="binusian-label-title">Binusian Status</span>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="is_binusian" value="true" class="radio-input" required
+                                    checked>
+                                Binusian Student
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="is_binusian" value="false" class="radio-input">
+                                Non-Binusian
+                            </label>
+                        </div>
+                    </div>
+
+                    <div style="width: 100%;">
+                        <div id="step1-btns">
+                            <button type="button" id="next-btn" class="btn-next">Next Step &rarr;</button>
+                        </div>
+
+                        <div id="step2-btns" style="display: none; flex-direction: column; gap: 10px;">
+                            <button type="submit" class="btn-primary">Finalize Registration</button>
+                            <button type="button" id="back-btn" class="btn-back">&larr; Back to Step 1</button>
+                        </div>
+                    </div>
+
+                    <div class="auth-alt-link">
+                        <p>Already have an account? <a href="login-page.html">Login</a></p>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="toast"></div>
+
+    <script src="/auth/register.js"></script>
+</body>
+
+</html>

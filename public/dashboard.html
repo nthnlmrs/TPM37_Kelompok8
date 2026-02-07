@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Technoscape 2026</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Technoscape 2026</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" class="active"><i class="fas fa-columns"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fas fa-file-alt"></i> Guidelines</a></li>
+            <li><button id="logout-btn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button></li>
+        </ul>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header class="header">
+            <h1 id="welcome-message">Welcome, User</h1>
+            <div class="user-info">
+                <span id="user-role" class="status-badge status-verified">Team Leader</span>
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Loading Spinner -->
+        <div id="loading-overlay">
+            <div class="spinner"></div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid" id="dashboard-content" style="display: none;">
+
+            <!-- Card 1: Team Overview -->
+            <div class="card">
+                <h3><i class="fas fa-users"></i> Team Overview</h3>
+                <div class="info-item">
+                    <span class="info-label">Username</span>
+                    <span class="info-value" id="team-username">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Password</span>
+                    <span class="info-value">••••••••</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Team Name Display</span>
+                    <span class="info-value" id="team-name">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Affiliation</span>
+                    <span class="info-value" id="team-affiliation">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Registration Status</span>
+                    <span class="status-badge status-verified">Verified</span>
+                </div>
+            </div>
+
+            <!-- Card 2: Leader Profile -->
+            <div class="card">
+                <h3><i class="fas fa-user-shield"></i> Leader Profile</h3>
+                <div class="info-item">
+                    <span class="info-label">Full Name</span>
+                    <span class="info-value" id="leader-name">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Email</span>
+                    <span class="info-value" id="leader-email">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">WhatsApp</span>
+                    <span class="info-value" id="leader-whatsapp">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Documents</span>
+                    <div style="display: flex; gap: 10px; margin-top: 5px;">
+                        <a href="#" id="view-cv" target="_blank" class="btn-outline"><i class="fas fa-file-pdf"></i>
+                            View CV</a>
+                        <a href="#" id="view-id" target="_blank" class="btn-outline"><i class="fas fa-id-card"></i> View
+                            ID</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Timeline / Status -->
+            <div class="card">
+                <h3><i class="fas fa-calendar-alt"></i> Timeline</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-date">Feb 10, 2026</span>
+                        <p class="timeline-title">Open Registration</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">Mar 10, 2026</span>
+                        <p class="timeline-title">Close Registration</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">Mar 15, 2026</span>
+                        <p class="timeline-title">Technical Meeting</p>
+                        <a href="#" class="btn-link">Join Meeting</a>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">Mar 20, 2026</span>
+                        <p class="timeline-title">Competition Day</p>
+                        <a href="#" class="btn-link">Event Link</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Contact Person -->
+            <div class="card">
+                <h3><i class="fas fa-headset"></i> Contact Person</h3>
+                <div class="info-item">
+                    <span class="info-label">Technoscape Admin</span>
+                    <span class="info-value">0812-3456-7890</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Email Support</span>
+                    <span class="info-value">support@technoscape.id</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logout-modal" class="modal">
+        <div class="modal-content">
+            <h3>Confirm Logout</h3>
+            <p>Are you sure you want to logout?</p>
+            <div class="modal-actions">
+                <button id="confirm-logout" class="btn-danger">Yes, Logout</button>
+                <button id="cancel-logout" class="btn-secondary">No, Stay</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
