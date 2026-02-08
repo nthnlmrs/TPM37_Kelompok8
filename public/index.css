@@ -92,7 +92,7 @@ ul {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   scroll-padding-top: 0;
-  /* Snap to absolute top - navbar overlays content */
+
 }
 
 
@@ -123,15 +123,15 @@ ul {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  /* Use full height */
+
   padding-top: 0 !important;
-  /* Override default section padding */
+
   padding-bottom: 0 !important;
 }
 
 .contact-section .container-contact-us {
   margin: 0;
-  /* Remove margin to let flexbox center it */
+
 }
 
 
@@ -580,10 +580,7 @@ ul {
   align-items: center;
   justify-content: center;
   margin-top: 20px;
-  border: 2px solid var(--border-color);
-  transition:
-    background var(--transition-medium),
-    border-color var(--transition-medium);
+  border-color: var(--transition-medium);
 }
 
 .podium-rank-gold {
@@ -616,7 +613,7 @@ ul {
   height: 120px;
 }
 
-/* Prizes Section - New Layout */
+
 .prizes-wrapper {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -763,7 +760,7 @@ ul {
   }
 }
 
-/* About Us Section */
+
 .about-section {
   display: flex;
   align-items: center;
@@ -864,7 +861,7 @@ ul {
   }
 }
 
-/* Jury Section */
+
 .jury-section {
   display: flex;
   flex-direction: column;
@@ -1048,7 +1045,7 @@ ul {
   }
 }
 
-/* Jury Carousel Section */
+
 .jury-carousel-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1149,7 +1146,7 @@ ul {
   line-height: 1.5;
 }
 
-/* FAQ Section */
+
 .faq-wrapper {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -1292,7 +1289,7 @@ ul {
   }
 }
 
-/* Mentor Section - Vertical Carousel */
+
 .mentor-carousel-wrapper {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -2579,7 +2576,7 @@ textarea.input-form {
   }
 }
 
-/* Auth Pages Styles */
+
 .auth-main {
   min-height: auto;
   display: flex;
@@ -2603,7 +2600,7 @@ textarea.input-form {
   max-width: 37.5rem;
 }
 
-/* Register 2 Column Layout */
+
 .register-layout {
   display: grid;
   grid-template-columns: 1fr 20rem;
@@ -2641,7 +2638,7 @@ textarea.input-form {
   margin-bottom: 1.5rem;
 }
 
-/* Vertical Progress Steps */
+
 .vertical-progress {
   display: flex;
   flex-direction: column;
@@ -2754,7 +2751,7 @@ textarea.input-form {
   }
 }
 
-/* Participant Type Cards */
+
 .participant-type-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2805,7 +2802,7 @@ textarea.input-form {
   color: var(--text-muted);
 }
 
-/* Inline Error */
+
 .error-inline {
   display: block;
   font-size: 0.8rem;
@@ -2819,7 +2816,7 @@ textarea.input-form {
   background: rgba(255, 82, 82, 0.05);
 }
 
-/* Form Divider */
+
 .form-divider {
   border: none;
   border-top: 0.0625rem solid rgba(255, 255, 255, 0.1);
@@ -3202,12 +3199,12 @@ textarea.input-form {
   background: #4caf50;
 }
 
-/* Hidden utility */
+
 .hidden {
   display: none !important;
 }
 
-/* Auth Footer */
+
 .auth-footer {
   text-align: center;
   margin-top: 1.5rem;
@@ -3228,7 +3225,7 @@ textarea.input-form {
   text-decoration: underline;
 }
 
-/* Nav Logo */
+
 .nav-logo {
   font-size: 1.2rem;
   font-weight: 800;
@@ -3254,7 +3251,7 @@ textarea.input-form {
   }
 }
 
-/* Footer Section - Horizontal Layout */
+
 .footer-section {
   min-height: auto !important;
   height: auto !important;

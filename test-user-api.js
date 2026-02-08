@@ -9,7 +9,7 @@ const client = wrapper(axios.create({ jar }));
 
 async function main() {
     try {
-        // 1. Get a valid team from DB
+
         const team = await prisma.team.findFirst();
         if (!team) {
             console.error('No teams found in DB. Run seed-dummies.js first.');
@@ -17,9 +17,9 @@ async function main() {
         }
         console.log(`Found team: ${team.team_name}`);
 
-        // 2. Login
+
         console.log('Logging in...');
-        // We assume the password is 'password123' as per seed-dummies.js
+
         const loginRes = await client.post('http://localhost:3000/login', {
             team_name: team.team_name,
             password: 'password123'
@@ -31,7 +31,7 @@ async function main() {
         }
         console.log('Login successful.');
 
-        // 3. Test GET /me
+
         console.log('\nTesting GET /me...');
         const resMe = await client.get('http://localhost:3000/me');
         const data = resMe.data.data;

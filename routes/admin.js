@@ -5,9 +5,9 @@ const { prisma } = require('../config/database');
 const path = require('path');
 const fs = require('fs');
 
-// --- Middleware ---
 
-// Check if user is admin (for API)
+
+
 const isAdmin = (req, res, next) => {
     if (req.session.is_admin_logged_in) {
         return next();
@@ -15,7 +15,7 @@ const isAdmin = (req, res, next) => {
     return res.status(401).json({ success: false, message: 'Unauthorized' });
 };
 
-// Check if user is admin (for Pages)
+
 const isAdminPage = (req, res, next) => {
     if (req.session.is_admin_logged_in) {
         return next();
@@ -23,24 +23,24 @@ const isAdminPage = (req, res, next) => {
     return res.redirect('/admin/login');
 };
 
-// --- Routes ---
 
-// Serve Admin Login Page
+
+
 router.get('/admin/login', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'admin', 'login.html'));
 });
 
-// Serve Admin Dashboard Page
+
 router.get('/admin', isAdminPage, (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'admin', 'dashboard.html'));
 });
 
-// Serve Admin Dashboard Page (Alias)
+
 router.get('/admin/dashboard', isAdminPage, (req, res) => {
     res.redirect('/admin');
 });
 
-// Admin Login API
+
 router.post('/admin/login', async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -80,7 +80,7 @@ router.post('/admin/login', async (req, res) => {
     }
 });
 
-// Admin Logout
+
 router.post('/admin/logout', (req, res) => {
     req.session.destroy((err) => {
         if (err) return res.status(500).json({ success: false, message: 'Logout failed' });
@@ -88,7 +88,7 @@ router.post('/admin/logout', (req, res) => {
     });
 });
 
-// Get All Teams (with Search & Sort)
+
 router.get('/api/admin/teams', isAdmin, async (req, res) => {
     try {
         const { search, sortBy, order } = req.query;
@@ -106,7 +106,7 @@ router.get('/api/admin/teams', isAdmin, async (req, res) => {
         } else if (sortBy === 'id') {
             orderBy.id = order === 'desc' ? 'desc' : 'asc';
         } else {
-            // Default to date if no valid sortBy provided
+
             orderBy.created_at = order === 'asc' ? 'asc' : 'desc';
         }
 
@@ -125,7 +125,7 @@ router.get('/api/admin/teams', isAdmin, async (req, res) => {
     }
 });
 
-// Get Single Team Details
+
 router.get('/api/admin/teams/:id', isAdmin, async (req, res) => {
     try {
         const { id } = req.params;
@@ -148,14 +148,14 @@ router.get('/api/admin/teams/:id', isAdmin, async (req, res) => {
     }
 });
 
-// Update Team
+
 router.put('/api/admin/teams/:id', isAdmin, async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const { team_name, leader } = req.body;
 
         await prisma.$transaction(async (tx) => {
-            // Update Team Name
+
             if (team_name) {
                 await tx.team.update({
                     where: { id },
@@ -163,9 +163,9 @@ router.put('/api/admin/teams/:id', isAdmin, async (req, res) => {
                 });
             }
 
-            // Update Leader Info
+
             if (leader) {
-                // Ensure leader exists for this team before updating
+
                 const existingLeader = await tx.teamLeader.findUnique({ where: { team_id: id } });
 
                 if (existingLeader) {
@@ -178,7 +178,7 @@ router.put('/api/admin/teams/:id', isAdmin, async (req, res) => {
                             line_id: leader.line_id,
                             github_id: leader.github_id,
                             birth_place: leader.birth_place,
-                            // birth_date handled carefully if passed string
+
                             ...(leader.birth_date && { birth_date: new Date(leader.birth_date) }),
                             is_binusian: leader.is_binusian === 'true' || leader.is_binusian === true
                         }
@@ -196,7 +196,7 @@ router.put('/api/admin/teams/:id', isAdmin, async (req, res) => {
 });
 
 
-// Delete Team
+
 router.delete('/api/admin/teams/:id', isAdmin, async (req, res) => {
     try {
         const teamId = parseInt(req.params.id);
@@ -205,7 +205,7 @@ router.delete('/api/admin/teams/:id', isAdmin, async (req, res) => {
             return res.status(400).json({ success: false, message: 'Invalid ID' });
         }
 
-        // Find team to get file paths
+
         const team = await prisma.team.findUnique({
             where: { id: teamId },
             include: { leader: true }
@@ -215,7 +215,7 @@ router.delete('/api/admin/teams/:id', isAdmin, async (req, res) => {
             return res.status(404).json({ success: false, message: 'Team not found' });
         }
 
-        // Delete files
+
         if (team.leader) {
             if (team.leader.cv_path) {
                 fs.unlink(team.leader.cv_path, (err) => {
@@ -229,7 +229,7 @@ router.delete('/api/admin/teams/:id', isAdmin, async (req, res) => {
             }
         }
 
-        // Delete from DB (Cascade will handle leader)
+
         await prisma.team.delete({
             where: { id: teamId }
         });

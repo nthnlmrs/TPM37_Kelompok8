@@ -14,7 +14,7 @@ async function testConnection(url) {
         await prisma.$connect();
         console.log(`Success: Connected to ${url}`);
 
-        // Check if table exists (this might fail if db is empty but connection is good)
+
         try {
             await prisma.team.count();
             console.log('Table Team exists.');
@@ -31,7 +31,7 @@ async function testConnection(url) {
 }
 
 async function main() {
-    // Try common local defaults
+
     const urls = [
         'mysql://root:@localhost:3306/finpro_tpm',
         'mysql://root:root@localhost:3306/finpro_tpm',

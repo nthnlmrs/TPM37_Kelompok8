@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const { prisma } = require('../config/database');
 
-// Handle Contact Form Submission
+
 router.post('/contact', async (req, res) => {
     try {
         const { name, email, subject, message } = req.body;
 
-        // Validation
+
         if (!name || !email || !subject || !message) {
             return res.status(400).json({
                 success: false,
@@ -23,7 +23,7 @@ router.post('/contact', async (req, res) => {
             });
         }
 
-        // Save to Database
+
         const newMessage = await prisma.contactMessage.create({
             data: {
                 name,
@@ -33,8 +33,7 @@ router.post('/contact', async (req, res) => {
             }
         });
 
-        // Simulate Email Sending (Log to console)
-        console.log(`[EMAIL SIMULATION] To: technoscape@bncc.net`);
+        console.log(`[EMAIL SIMULATION] To: hackathon@bncc.net`);
         console.log(`[EMAIL SIMULATION] From: ${email} (${name})`);
         console.log(`[EMAIL SIMULATION] Subject: ${subject}`);
         console.log(`[EMAIL SIMULATION] Message: ${message}`);

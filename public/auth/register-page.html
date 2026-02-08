@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- CSS INTERNAL --- */
         :root {
             --primary: #e91e63;
             --primary-dark: #c2185b;
@@ -46,16 +45,16 @@
             max-width: 1000px;
         }
 
-        /* LAYOUT 2 KOLOM */
+
         .register-layout {
             display: grid;
             grid-template-columns: 1.8fr 1fr;
-            /* Kiri Besar, Kanan Kecil */
+
             gap: 40px;
             align-items: start;
         }
 
-        /* KOLOM KIRI (Inputs) */
+
         .register-left {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
@@ -65,7 +64,7 @@
             padding: 30px;
         }
 
-        /* KOLOM KANAN (Controls) */
+
         .register-right {
             position: sticky;
             top: 20px;
@@ -121,7 +120,7 @@
             background: rgba(255, 255, 255, 0.12);
         }
 
-        /* Progress Steps */
+
         .progress-container {
             display: flex;
             flex-direction: column;
@@ -160,7 +159,7 @@
             box-shadow: 0 0 10px var(--primary);
         }
 
-        /* Binusian Toggle */
+
         .binusian-toggle-container {
             background: rgba(255, 255, 255, 0.05);
             padding: 15px;
@@ -195,7 +194,7 @@
             transform: scale(1.2);
         }
 
-        /* Buttons */
+
         .btn-primary,
         .btn-next {
             width: 100%;
@@ -231,7 +230,7 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* File Upload */
+
         .file-upload-container {
             display: flex;
             gap: 10px;
@@ -264,7 +263,7 @@
             background: var(--primary);
         }
 
-        /* Requirements List */
+
         #password-requirements {
             list-style: none;
             padding: 15px;
@@ -311,7 +310,7 @@
             text-decoration: none;
         }
 
-        /* Responsive */
+
         @media (max-width: 768px) {
             .register-layout {
                 grid-template-columns: 1fr;
@@ -328,7 +327,7 @@
             }
         }
 
-        /* Toast */
+
         #toast {
             visibility: hidden;
             min-width: 250px;

@@ -40,10 +40,10 @@ async function main() {
         });
     }
 
-    // Insert manually to allow custom random dates if needed, or just let DB handle created_at
-    // But since we want to test date sorting, we should try to validly set created_at or just insert sequentially.
-    // Primsa create doesn't easily let us override created_at unless we added it to the model as optional/default.
-    // The schema has `created_at DateTime @default(now())`, so we can pass it.
+
+
+
+
 
     for (const t of teams) {
         try {
@@ -53,7 +53,7 @@ async function main() {
                         team_name: t.teamName,
                         password_hash: t.password_hash,
                         is_binusian: t.is_binusian,
-                        created_at: t.createdAt // Manually setting date for sorting tests
+                        created_at: t.createdAt
                     }
                 });
 

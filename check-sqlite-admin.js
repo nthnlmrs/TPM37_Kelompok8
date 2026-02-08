@@ -11,7 +11,7 @@ const db = new sqlite3.Database(dbPath, (err) => {
 });
 
 db.serialize(() => {
-    // Check if admins table exists
+
     db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='admins';", (err, table) => {
         if (err) {
             console.error(err.message);
@@ -32,7 +32,6 @@ db.serialize(() => {
                     console.log('Found Admin Users:');
                     rows.forEach(row => {
                         console.log(`- Username: ${row.username}, Role: ${row.role}`);
-                        // Password is hashed, so we can't show it directly, but helpful to know it exists.
                     });
                 }
             }

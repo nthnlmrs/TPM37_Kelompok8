@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Elements ---
+
     const form = document.getElementById('register-form');
     const step1Inputs = document.getElementById('step1-inputs');
     const step2Inputs = document.getElementById('step2-inputs');
     const step1Btns = document.getElementById('step1-btns');
     const step2Btns = document.getElementById('step2-btns');
-    
+
     const nextBtn = document.getElementById('next-btn');
     const backBtn = document.getElementById('back-btn');
     const submitBtn = form.querySelector('button[type="submit"]');
@@ -13,27 +13,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressStep1 = document.getElementById('progress-step-1');
     const progressStep2 = document.getElementById('progress-step-2');
 
-    // --- Helper Functions ---
+
     function showToast(message, type = 'error') {
         const toast = document.getElementById('toast');
         toast.textContent = message;
         toast.className = 'toast-message show ' + (type === 'success' ? 'success' : 'error');
-        // Add style for success/error if not present in CSS
+
         if (type === 'success') {
             toast.style.background = 'linear-gradient(45deg, #4caf50, #2e7d32)';
         } else {
-            toast.style.background = ''; // Use CSS default
+            toast.style.background = '';
         }
-        
+
         setTimeout(() => {
-            toast.className = 'toast-message'; // hide
+            toast.className = 'toast-message';
         }, 4000);
     }
 
     function showError(fieldId, message) {
         const errorEl = document.getElementById('error-' + fieldId);
         const inputEl = document.getElementById(fieldId);
-        
+
         if (errorEl) errorEl.textContent = message;
         if (inputEl) inputEl.style.borderColor = 'var(--error)';
     }
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function clearError(fieldId) {
         const errorEl = document.getElementById('error-' + fieldId);
         const inputEl = document.getElementById(fieldId);
-        
+
         if (errorEl) errorEl.textContent = '';
         if (inputEl) inputEl.style.borderColor = '';
     }
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             number: /\d/.test(password),
             symbol: /[!@#$%^&*(),.?":{}|<>]/.test(password)
         };
-        
+
         updateRequirementUI('req-length', requirements.length);
         updateRequirementUI('req-upper', requirements.upper);
         updateRequirementUI('req-lower', requirements.lower);
@@ -71,14 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Navigation Logic ---
+
     nextBtn.addEventListener('click', () => {
         if (validateStep1()) {
             step1Inputs.style.display = 'none';
             step2Inputs.style.display = 'block';
             step1Btns.style.display = 'none';
             step2Btns.style.display = 'flex';
-            
+
             progressStep1.classList.remove('active');
             progressStep1.style.opacity = '0.5';
             progressStep2.classList.add('active');
@@ -98,11 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
         progressStep2.style.opacity = '0.5';
     });
 
-    // --- Validation Logic ---
+
     function validateStep1() {
         let isValid = true;
-        
-        // Team Name
+
+
         const teamName = document.getElementById('team-name');
         if (!teamName.value.trim()) {
             showError('team-name', 'Nama tim wajib diisi');
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearError('team-name');
         }
 
-        // Password
+
         const password = document.getElementById('password');
         if (!validatePassword(password.value)) {
             showError('password', 'Password tidak memenuhi syarat');
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearError('password');
         }
 
-        // Confirm Password
+
         const confirmPass = document.getElementById('confirm-password');
         if (confirmPass.value !== password.value) {
             showError('confirm-password', 'Password tidak cocok');
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function validateStep2() {
         let isValid = true;
 
-        // Full Name
+
         const fullName = document.getElementById('full_name');
         if (!fullName.value.trim()) {
             fullName.style.borderColor = 'var(--error)';
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fullName.style.borderColor = '';
         }
 
-        // Email
+
         const email = document.getElementById('email');
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email.value)) {
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearError('email');
         }
 
-        // WhatsApp
+
         const whatsapp = document.getElementById('whatsapp');
         if (whatsapp.value.length < 9) {
             whatsapp.style.borderColor = 'var(--error)';
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
             whatsapp.style.borderColor = '';
         }
 
-        // Birth Date (Age Check)
+
         const birthDate = document.getElementById('birthdate');
         if (birthDate.value) {
             const today = new Date();
@@ -184,11 +184,11 @@ document.addEventListener('DOMContentLoaded', () => {
             isValid = false;
         }
 
-        // Files
+
         const cv = document.getElementById('cv');
         if (cv.files.length === 0 && !cv.value) {
-             showToast('CV wajib diunggah');
-             isValid = false;
+            showToast('CV wajib diunggah');
+            isValid = false;
         }
 
         const idDoc = document.getElementById('identity_doc');
@@ -200,12 +200,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return isValid;
     }
 
-    // --- Realtime Listeners ---
+
     document.getElementById('password').addEventListener('input', (e) => validatePassword(e.target.value));
 
-    // --- UI Update Logic (from inline script) ---
-    
-    // File Upload Text
+
+
+
     document.getElementById('cv').addEventListener('change', function (e) {
         document.getElementById('cv-display').textContent = e.target.files[0] ? e.target.files[0].name : 'No file chosen';
     });
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('identity-display').textContent = e.target.files[0] ? e.target.files[0].name : 'No file chosen';
     });
 
-    // Binusian Label
+
     const radios = document.querySelectorAll('input[name="is_binusian"]');
     const idLabel = document.getElementById('identity-label');
     radios.forEach(radio => {
@@ -226,20 +226,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Form Submission ---
+
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // Final validation
+
         if (!validateStep1() || !validateStep2()) {
             showToast('Mohon lengkapi data dengan benar');
             return;
         }
 
-        // Prepare Data
+
         const formData = new FormData(form);
-        
-        // Disable button
+
+
         submitBtn.disabled = true;
         submitBtn.textContent = 'Processing...';
 

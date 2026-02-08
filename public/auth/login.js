@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Toggle password visibility
+
     const eyeIcon = document.getElementById('eye-icon');
     if (eyeIcon) {
         eyeIcon.addEventListener('click', () => {
@@ -11,28 +11,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Show toast message
+
     function showToast(message, type = 'error') {
         const toast = document.getElementById('toast');
         toast.textContent = message;
-        // Reset classes
+
         toast.className = 'toast-message';
-        // Force reflow
+
         void toast.offsetWidth;
-        // Add show class
+
         toast.classList.add('show');
         if (type === 'success') {
             toast.style.background = 'linear-gradient(45deg, #4caf50, #8bc34a)';
         } else {
             toast.style.background = 'linear-gradient(45deg, #e91e63, #f44336)';
         }
-        
+
         setTimeout(() => {
             toast.classList.remove('show');
         }, 4000);
     }
 
-    // Login form submit
+
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {

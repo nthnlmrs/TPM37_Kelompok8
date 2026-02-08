@@ -8,7 +8,7 @@ async function main() {
     const password_hash = await bcrypt.hash('password123', 10);
 
     try {
-        // Create Team
+
         const team = await prisma.team.upsert({
             where: { team_name: 'tim_test' },
             update: {
@@ -22,7 +22,7 @@ async function main() {
             }
         });
 
-        // Create Leader
+
         const existingLeader = await prisma.teamLeader.findUnique({ where: { email: 'test@example.com' } });
         if (!existingLeader) {
             await prisma.teamLeader.create({

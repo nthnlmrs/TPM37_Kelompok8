@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const searchBar = document.getElementById('search-bar');
     const sortSelect = document.getElementById('sort-select');
 
-    // Modals
     const viewModal = document.getElementById('view-modal');
     const editModal = document.getElementById('edit-modal');
     const viewModalBody = document.getElementById('view-modal-body');
@@ -11,13 +10,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const closeButtons = document.querySelectorAll('.close');
     const cancelEditBtn = document.getElementById('cancel-edit');
 
-    // Fetch Teams with Filters
     async function fetchTeams() {
         try {
             const searchTerm = searchBar ? searchBar.value : '';
             const sortValue = sortSelect ? sortSelect.value : 'id-asc';
             const [sortBy, order] = sortValue.split('-');
-
 
             const url = new URL('/api/admin/teams', window.location.origin);
             if (searchTerm) url.searchParams.append('search', searchTerm);
@@ -38,7 +35,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // Render Teams
     function renderTeams(teams) {
         teamList.innerHTML = '';
         if (teams.length === 0) {
@@ -46,19 +42,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
+        const escapeHtml = (unsafe) => {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        };
+
         teams.forEach(team => {
             const row = document.createElement('tr');
-
-            // Safe helper
-            const escapeHtml = (unsafe) => {
-                return unsafe
-                    .replace(/&/g, "&amp;")
-                    .replace(/</g, "&lt;")
-                    .replace(/>/g, "&gt;")
-                    .replace(/"/g, "&quot;")
-                    .replace(/'/g, "&#039;");
-            };
-
             row.innerHTML = `
                 <td>#${team.id}</td>
                 <td>${escapeHtml(team.team_name)}</td>
@@ -80,7 +74,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             teamList.appendChild(row);
         });
 
-        // Attach Event Listeners to dynamic buttons
         document.querySelectorAll('.btn-view').forEach(btn => {
             btn.addEventListener('click', () => openViewModal(btn.dataset.id));
         });
@@ -92,12 +85,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // --- Search & Sort Events ---
     let debounceTimer;
     if (searchBar) {
         searchBar.addEventListener('input', () => {
             clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(fetchTeams, 300); // 300ms debounce
+            debounceTimer = setTimeout(fetchTeams, 300);
         });
     }
 
@@ -105,7 +97,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         sortSelect.addEventListener('change', fetchTeams);
     }
 
-    // --- View Modal Logic ---
     async function openViewModal(id) {
         try {
             const res = await fetch(`/api/admin/teams/${id}`);
@@ -158,7 +149,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // --- Edit Modal Logic ---
     async function openEditModal(id) {
         try {
             const res = await fetch(`/api/admin/teams/${id}`);
@@ -205,7 +195,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (result.success) {
                     alert('Team updated successfully');
                     editModal.style.display = 'none';
-                    fetchTeams(); // Refresh list
+                    fetchTeams();
                 } else {
                     alert('Error: ' + result.message);
                 }
@@ -216,7 +206,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // --- Modal Closing Logic ---
     closeButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             viewModal.style.display = 'none';
@@ -235,7 +224,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (event.target == editModal) editModal.style.display = "none";
     }
 
-    // Logout
     const logoutBtn = document.getElementById('logout-btn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', async (e) => {
@@ -249,10 +237,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // Initial Fetch
     fetchTeams();
 
-    // Global function for Delete button (if needed, but event listeners attached above are better)
     window.deleteTeam = async function (id) {
         if (!confirm('Are you sure you want to delete this team? This cannot be undone.')) return;
 
@@ -262,7 +248,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             if (result.success) {
                 alert('Team deleted successfully');
-                fetchTeams(); // Refresh list
+                fetchTeams();
             } else {
                 alert('Error: ' + result.message);
             }
